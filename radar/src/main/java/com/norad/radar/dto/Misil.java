@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table //tabla
+@Table(name = "misiles") //tabla
 @NoArgsConstructor //contructor vacio
 @AllArgsConstructor //contructor con todos los argumentos
 @Data //getters y setters
