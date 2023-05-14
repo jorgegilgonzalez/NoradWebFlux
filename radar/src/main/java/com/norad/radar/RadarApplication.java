@@ -8,7 +8,7 @@ public class RadarApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RadarApplication.class, args);
-		System.out.println("hola mundo");
+		
 	}
 
 }
