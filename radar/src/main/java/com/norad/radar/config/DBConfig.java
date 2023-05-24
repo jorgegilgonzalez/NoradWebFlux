@@ -8,6 +8,7 @@ import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 import org.springframework.r2dbc.connection.init.CompositeDatabasePopulator;
 import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
@@ -34,4 +35,9 @@ public class DBConfig extends AbstractR2dbcConfiguration {
         initializer.setDatabasePopulator(populator);
         return initializer;
     }
+    
+    @Bean
+	public WebClient.Builder webClientBuilder() {
+		return WebClient.builder();
+	}
 }
