@@ -17,4 +17,8 @@ public class EspacioAereoService {
 	public Flux<ObjetoVolador> lanzaMisiles(int numero){
 		return GeneradorTraficoAereo.lanzarMisiles(numero);
 	}
+	
+	public Flux<ObjetoVolador> ataqueMezclado(int numero){
+		return GeneradorTraficoAereo.ataqueMezclado(numero);
+	}
 }

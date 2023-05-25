@@ -20,12 +20,14 @@ import reactor.core.publisher.Mono;
 public class RadarHandler {
 
 	private final String PATH = "http://localhost:8080/vuelosactivos/todos";
+	private final String PATH2 = "http://localhost:8080/vuelosactivos//trafico/5";
 
 	@Autowired
 	private WebClient.Builder webClientBuilder;
 	
 	@Autowired
 	private MisilService misilService;
+	
 
 	public Mono<ServerResponse> getAll(ServerRequest serverRequest) {
 		Flux<CabezaNuclearEnemiga> cabezasNuclearesEnemigas = getAll();
@@ -36,13 +38,19 @@ public class RadarHandler {
 
 	// creamos una instancia del webClient reactivo que recoge un flux con los
 	// elementos del otro servicio API
+	
+	
 	public Flux<CabezaNuclearEnemiga> getAll() {
 
-		return webClientBuilder.build().get().uri(PATH).retrieve().bodyToFlux(CabezaNuclearEnemiga.class)
+		return webClientBuilder.build().get().uri(PATH2).retrieve().bodyToFlux(CabezaNuclearEnemiga.class)
 				.doOnNext(e -> {
 					if (e.getEsMisilBalistico()) {
 						System.out.println("ALARMA !! " + e);
-						//if (e.getMegatones()>8)
+						if (e.getMegatones()>8) {
+							System.out.println("ALTO POTENCIAL DESTRUCTIVO, enviando contramedida tipo Match3");
+						} 
+					} else {
+						System.out.println("Vuelo Comercial detectado: " + "Nombre del vuelo: "+ e.getNombre());
 					}
 				});
 

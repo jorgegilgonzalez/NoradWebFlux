@@ -51,7 +51,7 @@ public class MisilService {
 				//si existe el modelo de misil lanza error, de lo contrario, si el id es correcto actualizar el producto, de lo contrario lanza error de id no existe - if ternario anidado
 				return existeId.flatMap(e-> e?
 						existeModelo.flatMap(m -> m ?  Mono.error(new Exception("El modelo de misil ya existe en la BD"))
-						: misilRepository.save(new Misil(id, misil.getModelo(), misil.getAlcance())))
+						: misilRepository.save(new Misil(id, misil.getModelo(), misil.getAlcance(),misil.getCantidad())))
 						: Mono.error(new Exception("El id no coincide"))); 
 					 
 					 

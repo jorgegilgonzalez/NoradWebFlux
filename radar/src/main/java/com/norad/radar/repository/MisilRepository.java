@@ -16,4 +16,19 @@ public interface MisilRepository extends ReactiveCrudRepository<Misil, Integer>{
 	
 	@Query("SELECT * FROM misiles WHERE id<> :id AND modelo = :modelo")
 	Mono<Misil> findModeloRepetido(int id, String modelo);
+
+	
+	/*
+	@Query("UPDATE customer c SET c.firstName = :firstName WHERE c.id = :id")
+	  Integer setNewFirstNameForId(@Param("firstName") String firstName, @Param("id") long id);   
+	
+*/
+	//@Modifying
+	//@Query("UPDATE misiles m SET c.cantidad = :cantidad WHERE c.id = :id")
+	//Mono<Misil> updateCantidadLanzaUno(int id, int cantidad);
+	/*
+	@Modifying
+	@Query("UPDATE misiles SET cantidad = :cantidad where id = :id")
+	Mono<Misil> updateCantidadLanzaUno(int id, int cantidad);
+	*/
 }

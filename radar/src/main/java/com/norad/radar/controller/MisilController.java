@@ -49,6 +49,13 @@ public class MisilController {
 		return misilService.update(id, misil);
 	}
 
+	// subpath /id lanza un misil (resta uno de la cantidad)
+	@PutMapping("/{id}/lanzamiento")
+	public Mono<Misil> lanzamientoContramedida(@PathVariable("id") int id, @RequestBody Misil misil) {
+		misil.setCantidad(misil.getCantidad() - 1);
+		return misilService.update(id, misil);
+	}
+
 	// subpath /id borra misil por id
 	@DeleteMapping("/{id}")
 	public Mono<Void> deleteById(@PathVariable("id") int id) {

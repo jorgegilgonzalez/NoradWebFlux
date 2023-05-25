@@ -30,5 +30,11 @@ public class EspacioAereoController {
 		return espacioAereo.lanzaMisiles(numero);
 	}
 	
-	
+	@GetMapping(value = "/trafico/{numero}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<ObjetoVolador> traficoFlux(@PathVariable ("numero") int numero){
+		
+		return  espacioAereo.ataqueMezclado(numero);
+				
+				
+	}
 }

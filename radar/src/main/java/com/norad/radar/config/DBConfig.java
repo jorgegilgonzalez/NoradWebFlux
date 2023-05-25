@@ -12,10 +12,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Configuration
-@Slf4j
+
 public class DBConfig extends AbstractR2dbcConfiguration {
 
     @Value("${spring.r2dbc.url}")

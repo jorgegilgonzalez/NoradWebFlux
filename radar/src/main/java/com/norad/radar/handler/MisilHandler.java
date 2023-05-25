@@ -9,14 +9,13 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import com.norad.radar.dto.Misil;
 import com.norad.radar.service.MisilService;
 
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
 //manera reactiva de manejar las rutas, de forma funcional en vez de la clasica MVC con el rest controller
 @Component
-@Slf4j
+
 public class MisilHandler {
 
 	@Autowired
@@ -56,6 +55,9 @@ public class MisilHandler {
 				.body(misilService.update(id, m), Misil.class));
 
 	}
+	
+	
+	
 
 	//dandole un serverRequest con un id , devuelve un ServerResponse con un ok, y borra el misil que podemos ver en json 
 	public Mono<ServerResponse> delete(ServerRequest serverRequest) {

@@ -19,10 +19,18 @@ public class GeneradorTraficoAereo {
 	}
 		
 		public static Flux<ObjetoVolador> lanzarMisiles(int numero) {
-
-			return Flux.range(1,numero).map(i -> lanzamientoMisil());
-			
+			return Flux.range(1,numero).map(misil -> lanzamientoMisil());
+			//return Flux.range(1,numero).flatMap(misil -> Flux.from(lanzarMisiles(numero)));
+		}
 		
+			public static Flux<ObjetoVolador> ataqueMezclado(int numero) {
+				
+				Flux<ObjetoVolador> fluxTrafico = generadorTrafico();
+				Flux<ObjetoVolador> fluxMisiles = lanzarMisiles(numero);
+				
+				
+				return fluxTrafico.mergeWith(fluxMisiles); 
+			
 		
 	}
 
@@ -50,7 +58,7 @@ public class GeneradorTraficoAereo {
 		String destino = Faker.instance(localeSPAIN).address().cityName();
 		int megatones = (int) (1 + Math.random() * 20);
 
-		System.out.println("Detectado vuelo > " + nombre + " " + "Origen > " + origen);
+		System.out.println("LANZAMIENTO!! Ataque Misil Intercontinental> " + nombre + " " + "Origen > " + origen + "Destino > " + destino.toUpperCase());
 		return new MisilIntercontinental(nombre, true, origen, destino, megatones);
 
 	}
